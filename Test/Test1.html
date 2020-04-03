@@ -1,0 +1,61 @@
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jaque test</title>
+
+</head>
+<body>
+
+<center>
+<h1>Test - Ejercicio uno</h1>
+<br><button onclick="ejercicio1()">Iniciar función</button>
+<br><br><br>
+<p id="arreglo"></p>
+<p id="resultado"></p>
+</center>
+<script>
+
+function ejercicio1(arreglo,dim)
+{
+  var iter = 1;
+  var max = 1, cont = 1;
+  var res = [];
+  var res_temp = [];
+  var arreglo = [5, 6, 3, 5, 7, 8, 9, 1, 2];
+  var dim = arreglo.length;
+  for(iter; iter < dim; iter++)
+  {
+    //Verificamos si el elemento actual es mayor que el anterior
+    if(arreglo[iter] > arreglo[iter - 1])
+    {
+      cont ++;
+      //Removemos tope para evitar repeticiones
+      res_temp.pop();
+      res_temp.push(arreglo[iter - 1]);
+      res_temp.push(arreglo[iter]);
+    }
+    //Si no lo es, guardamos y vaciamos el arreglo temporal, reiniciamos contadores
+    else {
+      if(max <= cont){
+        max = cont;
+        res = res_temp;
+        res_temp = [];
+      }
+      cont = 1;
+    }
+  }
+  //Si en los ultimos elementos se cumple la condicion, ese arreglo es el mas grande
+  if(max < cont){
+    max = cont;
+    res = res_temp;
+  }
+  //Imprimimos resultados
+  document.getElementById("arreglo").innerHTML = "<h1>  El arreglo original es: " + arreglo + "</h3> " ;
+  document.getElementById("resultado").innerHTML = "<h1>  El maximo subarreglo resulstante es: " + res + "</h3> " ;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jaque test</title>
+
+</head>
+<body>
+
+<center>
+<h1>Test - Ejercicio cinco</h1>
+<h4> Nota: el arreglo de simbolos es definido dentro del programa. </h4>
+<br><button onclick="simbolosBal()">Iniciar funcion</button>
+<br><br><br>
+<p id="arreglo"></p>
+<p id="resultado"></p>
+</center>
+
+<script>
+
+
+function simbolosBal() {
+  //Arreglo de simbolos a verificar si estan balanceados
+  var simbolos = ['(','[','(','[','(',')',']',')',']',')'];
+  //Emplearemos una pila
+  var pila = [];
+  var iter = 0;
+  var tam = simbolos.length;
+  //Imprimimos arreglo de simbolos
+  document.getElementById("arreglo").innerHTML = "<h3> El arreglo de simbolos es: " + simbolos + "</h3>";
+  //Iteramos hasta la longitud del arreglo
+  for(iter; iter < tam; iter ++)
+  {
+    //Insertamos expresiones que abren
+    if(simbolos[iter] == '(' || simbolos[iter] == '['){
+      pila.push(simbolos[iter]);
+    }
+    else{
+      //Validamos que haya elementos
+      if(pila.length == 0)
+      {
+        document.getElementById("resultado").innerHTML = "<h3> Pila vacia!! </h3>";
+        return false;
+      }
+      //Verificamos las expresiones que cierran concuerden con la ultima que abre
+      if(simbolos[iter] == ']')
+      {
+        if(pila.pop() != '['){
+          document.getElementById("resultado").innerHTML = "<h3> La cadena de simbolos no está balanceada. </h3>";
+          return false;
+        }
+      }
+      if(simbolos[iter] == ')')
+      {
+        if(pila.pop() != '('){
+          document.getElementById("resultado").innerHTML = "<h3> La cadena de simbolos no está balanceada. </h3>";
+          return false;
+        }
+      }
+    }
+  }
+  //Si no hubo error previo, y la pilaesta vacia, la cadena es balanceada
+  if(pila.length == 0)
+  {
+    document.getElementById("resultado").innerHTML = "<h3> Cadena balanceada. </h3>";
+    return true;
+  }
+  //Si no hubo errores previos, pero la sobran elementos en la pila,la cadena no esta balanceada
+  else
+  {
+    document.getElementById("resultado").innerHTML = "<h3>Sobran elementos. La cadena de simbolos no está balanceada. </h3>";
+    return false;
+  }
+}
+
+</script>
+
+</body>
+</html>

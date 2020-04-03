@@ -1,0 +1,63 @@
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jaque test</title>
+
+</head>
+<body>
+
+<h1>Test - Ejercicio dos</h1>
+
+
+<label for="Pelemento">Ingresa el primer entero:</label>
+<input type="text" id="txElementoUno" name="Pelemento" placeholder="Ingresa un valor" maxlength="3">
+<label for="Selemento">Ingresa el segundo entero:</label>
+<input type="text" id="txElementoDos" name="Selemento" placeholder="Ingresa un valor" maxlength="3">
+<br><br><button onclick="calculaSerie()">Enviar</button>
+<br><br><br>
+<p id="resultado"></p>
+<script>
+
+
+function calculaSerie() {
+  //Se valida que se ingresen valores
+  if(document.getElementById("txElementoUno").value == "" || document.getElementById("txElementoDos").value == "")
+  {
+    alert("Ingresa los valores necesarios");
+    return false;
+  }
+  //Se valida que sean numeros positivos
+  if(document.getElementById("txElementoUno").value < 0 || document.getElementById("txElementoDos").value < 0)
+  {
+    alert("Los números deben ser positivos");
+    return false;
+  }
+  var i = 1;
+  var n = parseInt(document.getElementById("txElementoUno").value);
+  var m = parseInt(document.getElementById("txElementoDos").value);
+  var serie = 0;
+  //Se valida el segundo numero sea mayor que el primero
+  if(m < n){
+    alert("El segundo elemento debe ser mayor que el primero");
+    return false;
+  }
+  else if(n == m){
+    serie = n + m;
+    document.getElementById("resultado").innerHTML = "El resultado de la serie es: " + serie;
+  }
+  else{
+    while ((n + i) < m)
+    {
+      serie = serie + (n + i);
+      i++;
+    }
+    serie = serie + m + n;
+    document.getElementById("resultado").innerHTML = "El resultado de la serie es: " + serie;
+  }
+}
+
+</script>
+
+</body>
+</html>

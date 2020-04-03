@@ -1,0 +1,45 @@
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jaque test</title>
+
+</head>
+<body>
+
+<center>
+<h1>Test - Ejercicio cuatro</h1>
+
+<br><button onclick="eliminaDup()">Iniciar función</button>
+<br><br><br>
+<p id="arreglo"></p>
+<p id="resultado"></p>
+</center>
+
+<script>
+
+function eliminaDup() {
+  var arreglo = [];
+  var res = [];
+  var iter = 0;
+  //Definimos tamano y elementos del arreglo
+  var tam = 5;
+  for(iter; iter < tam; iter ++){
+    arreglo[iter] = prompt('Ingrea el elemento ' + (iter + 1) + " del arreglo");
+  }
+  //Detectamos repetidos
+  var aux = {};
+  arreglo.forEach(function(elem) {
+    if(!aux[elem] ){
+      aux[elem] = true;
+    }
+  });
+  res = Object.keys(aux);
+
+  document.getElementById("arreglo").innerHTML = "<h3> El arreglo original es: " + arreglo +"</h3>";
+  document.getElementById("resultado").innerHTML = "<h3> El arreglo sin duplicados es: " + res +"</h3>";
+}
+
+</script>
+</body>
+</html>

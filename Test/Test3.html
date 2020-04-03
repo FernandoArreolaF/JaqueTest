@@ -1,0 +1,45 @@
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jaque test</title>
+<script src="./js/jquery3.3.1.js"></script>
+</head>
+<body>
+
+<center>
+<h1>Test - Ejercicio tres</h1>
+
+<br><button onclick="test2()">Iniciar función</button>
+<br><br><br>
+<p id="arreglo"></p>
+<p id="resultado"></p>
+</center>
+<script>
+
+//Funcion que encuentra el k-elemento de un arreglo
+function test2()
+{
+  var arreglo = [];
+  var iter = 0;
+  //Definimos tamano del arreglo
+  var tam = 5;
+  for(iter; iter < tam; iter ++){
+    arreglo[iter] = prompt('Ingrea el elemento ' + (iter + 1) + " del arreglo");
+  }
+  var elemento = prompt('Ingresa el k-elemento más grande a buscar');
+  if(elemento > arreglo.length || elemento < 0){
+    alert('El elemento a buscar no es valido');
+    return false;
+  }
+  arreglo.sort();
+  var resultado = arreglo.length - elemento;
+  document.getElementById("arreglo").innerHTML = "<h3> El arreglo es: " +  arreglo + "</h3>";
+  document.getElementById("resultado").innerHTML = "<h3> El " + elemento +" elemento más grande del arreglo es: " +  arreglo[resultado] + "</h3>";
+
+}
+
+</script>
+
+</body>
+</html>
